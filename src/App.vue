@@ -4,7 +4,7 @@
     <button @click="animateBlock">Animate</button>
   </div>
   <div class="container">
-    <transition>
+    <transition name="para">
       <p v-if="paraIsVisible">This paragraph is not always visible..</p>
     </transition>
     <button @click="toggleParagraph">Toggle paragraph</button>
@@ -91,39 +91,41 @@ button:active {
 
 .animate {
   /* transform: translateX(-150px); */
-  animation: slide-fade 0.3s ease-out forwards;
+  animation: slide-scale 0.3s ease-out forwards;
 }
 
 /* entering start state */
-.v-enter-from {
-  opacity: 0;
-  transform: translateY(-30px);
+.para-enter-from {
+  /*  opacity: 0;
+  transform: translateY(-30px); */
 }
 
-.v-enter-active {
-  transition: all 0.3s ease-out;
+.para-enter-active {
+  /* transition: all 0.3s ease-out; */
+  animation: slide-scale 0.3s ease-out;
 }
 
 /* entering final state */
-.v-enter-to {
-  opacity: 1;
-  transform: translateY(0);
+.para-enter-to {
+  /* opacity: 1;
+  transform: translateY(0); */
 }
 
 /* leaving start state */
-.v-leave-from {
-  opacity: 1;
-  transform: translateY(0);
+.para-leave-from {
+  /* opacity: 1;
+  transform: translateY(0); */
 }
 
-.v-leave-active {
-  transition: all 0.3s ease-in;
+.para-leave-active {
+  /* transition: all 0.3s ease-in; */
+  animation: slide-scale 0.3s ease-out;
 }
 
 /* leaving final state */
-.v-leave-to {
-  opacity: 0;
-  transform: translateY(30px);
+.para-leave-to {
+  /* opacity: 0;
+  transform: translateY(30px); */
 }
 
 @keyframes slide-scale {
