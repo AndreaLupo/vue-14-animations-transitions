@@ -1,12 +1,17 @@
 <template>
-  <div class="backdrop" @click="$emit('close')"></div>
-  <dialog open>
-    <slot></slot>
-  </dialog>
+  <div v-if="open" class="backdrop" @click="$emit('close')"></div>
+  
+  <transition name="modal">
+    <dialog open v-if="open">
+      <slot></slot>
+    </dialog>
+  </transition>
+
 </template>
 
 <script>
 export default {
+  props: ['open'],
   emits: ['close'],
 };
 </script>
@@ -34,17 +39,42 @@ dialog {
   background-color: white;
   z-index: 100;
   border: none;
-  animation: modal 0.3s ease-out forwards;
+  /* commented to use the animation from outside */
+  /* animation: modal 0.3s ease-out forwards;
+ */
 }
 
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+  transform: translateY(-50px) scale(0.9);
+}
+ 
+.modal-enter-active,
+.modal-leave-active {
+  transition: all 0.3s ease-out;
+}
+ 
+.modal-enter-to,
+.modal-leave-from {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/**
+Not working with keyframe
 @keyframes modal {
-  from {
-    opacity: 0;
-    transform: translateY(-50px) scale(0.9);
+  0% {
+    
   }
-  to {
+  100% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
-}
+} */
+
+</style>
+
+<style>
+
 </style>

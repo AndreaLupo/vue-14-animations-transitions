@@ -10,10 +10,11 @@
     <button @click="toggleParagraph">Toggle paragraph</button>
   </div>
   
-  <base-modal @close="hideDialog" v-if="dialogIsVisible">
+  <base-modal @close="hideDialog" v-if="dialogIsVisible" :open="dialogIsVisible">
     <p>This is a test dialog!</p>
     <button @click="hideDialog">Close it!</button>
   </base-modal>
+  
   <div class="container">
     <button @click="showDialog">Show Dialog</button>
   </div>
@@ -141,5 +142,6 @@ button:active {
     transform: translateX(-150px) scale(1);
   }
 }
+
 
 </style>
