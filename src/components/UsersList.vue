@@ -55,12 +55,20 @@ li {
 }
 
 
-.user-list-enter-active {
+.user-list-leave-active {
     transition: all 1s ease-out;
+    /** necessary for -move  class in the out transition */
+    position: absolute;
 }
 
 .user-list-enter-to {
     opacity: 0;
     transform: translateX(30px);
+}
+
+/** on other elements of the list when an item is added or removed.
+ */
+.user-list-move {
+    transition: transform 0.8s ease;
 }
 </style>
