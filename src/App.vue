@@ -26,10 +26,21 @@
   <div class="container">
     <button @click="showDialog">Show Dialog</button>
   </div>
+
+  <hr/>
+
+  <div class="container">
+    <users-list></users-list>
+  </div>
 </template>  
 
 <script>
+import UsersList from './components/UsersList.vue';
+
 export default {
+  components: {
+    UsersList
+  },
   data() {
     return { 
       animatedBlock: false,
